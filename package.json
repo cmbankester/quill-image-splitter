@@ -1,6 +1,6 @@
 {
   "name": "quill-image-splitter",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Quill module to extract base64 encoded images and split them into separate file uploads",
   "main": "quill-image-splitter.js",
   "scripts": {
