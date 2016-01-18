@@ -74,44 +74,19 @@
 
 	    // loop over img tags that have base64 content and call `on_split` on them
 	    var update = function update() {
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
+	      return _this.getBase64Images().forEach(function (img) {
+	        var src = img.attributes.src.value;
+	        Promise.resolve(_this.on_split(src)).then(function (href) {
+	          if (!href) throw new Error("No href returned from `on_split`");
+	          img.attributes.src.value = href;
+	        }).catch(function (err) {
+	          console.log('Caught error: ' + err);
 
-	      try {
-	        var _loop = function _loop() {
-	          var img = _step.value;
-
-	          var src = img.attributes.src.value;
-	          Promise.resolve(_this.on_split(src)).then(function (href) {
-	            if (!href) throw new Error("No href returned from `on_split`");
-	            img.attributes.src.value = href;
-	          }).catch(function (err) {
-	            console.log('Caught error: ' + err);
-
-	            // if an error occurs (e.g. when `on_split` didn't return an href)
-	            // resolve with null
-	            return Promise.resolve(null);
-	          });
-	        };
-
-	        for (var _iterator = _this.getBase64Images()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	          _loop();
-	        }
-	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
-	          }
-	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
-	          }
-	        }
-	      }
+	          // if an error occurs (e.g. when `on_split` didn't return an href)
+	          // resolve with null
+	          return Promise.resolve(null);
+	        });
+	      });
 	    };
 
 	    // when a quill updates, check for new images

@@ -11,23 +11,21 @@ class ImageSplitter {
     this.on_split = options.on_split || (() => Promise.resolve(null));
 
     // loop over img tags that have base64 content and call `on_split` on them
-    const update = () => {
-      for (let img of this.getBase64Images()) {
-        let src = img.attributes.src.value;
-        Promise.resolve(this.on_split(src))
-          .then(href => {
-            if (!href) throw new Error("No href returned from `on_split`");
-            img.attributes.src.value = href;
-          })
-          .catch(err => {
-            console.log(`Caught error: ${err}`);
+    const update = () => this.getBase64Images().forEach(img => {
+      let src = img.attributes.src.value;
+      Promise.resolve(this.on_split(src))
+      .then(href => {
+        if (!href) throw new Error("No href returned from `on_split`");
+        img.attributes.src.value = href;
+      })
+      .catch(err => {
+        console.log(`Caught error: ${err}`);
 
-            // if an error occurs (e.g. when `on_split` didn't return an href)
-            // resolve with null
-            return Promise.resolve(null);
-          });
-      }
-    };
+        // if an error occurs (e.g. when `on_split` didn't return an href)
+        // resolve with null
+        return Promise.resolve(null);
+      });
+    });
 
     // when a quill updates, check for new images
     quill.on('text-change', update);
