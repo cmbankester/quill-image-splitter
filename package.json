@@ -1,0 +1,28 @@
+{
+  "name": "quill-image-splitter",
+  "version": "0.1.0",
+  "description": "Quill module to extract base64 encoded images and split them into separate file uploads",
+  "main": "quill-image-splitter.js",
+  "scripts": {
+    "compile": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immense/quill-image-splitter.git"
+  },
+  "keywords": [
+    "quill"
+  ],
+  "author": "Christian Bankester <cbankester@immense.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/immense/quill-image-splitter/issues"
+  },
+  "homepage": "https://github.com/immense/quill-image-splitter#readme",
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "webpack": "^1.12.11"
+  }
+}

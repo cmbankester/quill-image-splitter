@@ -1,0 +1,21 @@
+{
+  "name": "quill-image-splitter",
+  "description": "Quill module to extract base64 encoded images and split them into separate file uploads",
+  "main": "quill-image-splitter.js",
+  "authors": [
+    "Christian Bankester <cbankester@immense.net>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "quill"
+  ],
+  "homepage": "https://github.com/immense/quill-image-splitter",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
