@@ -14,7 +14,7 @@ class ImageSplitter {
     const update = () => {
       for (let img of this.getBase64Images()) {
         let src = img.attributes.src.value;
-        this.on_split(src)
+        Promise.resolve(this.on_split(src))
           .then(href => {
             if (!href) throw new Error("No href returned from `on_split`");
             img.attributes.src.value = href;

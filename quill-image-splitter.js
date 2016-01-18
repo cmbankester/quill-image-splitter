@@ -83,7 +83,7 @@
 	          var img = _step.value;
 
 	          var src = img.attributes.src.value;
-	          _this.on_split(src).then(function (href) {
+	          Promise.resolve(_this.on_split(src)).then(function (href) {
 	            if (!href) throw new Error("No href returned from `on_split`");
 	            img.attributes.src.value = href;
 	          }).catch(function (err) {
