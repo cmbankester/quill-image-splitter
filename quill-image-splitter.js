@@ -99,7 +99,7 @@
 	  _createClass(ImageSplitter, [{
 	    key: 'getBase64Images',
 	    value: function getBase64Images() {
-	      return this.quill.container.querySelectorAll('img[src^="data:"]');
+	      return Array.prototype.splice.call(this.quill.container.querySelectorAll('img[src^="data:"]'), 0);
 	    }
 	  }]);
 
